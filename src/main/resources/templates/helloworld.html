@@ -6,6 +6,16 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <p th:text="'Time on the server now is: ' + ${theDate}" class="funny"/>
+    <p th:text="'Time on the server now is: ' + ${theDate}" class="funny" id="timeElement"/>
+
+    <script>
+        function updateTime() {
+            var now = new Date();
+            document.getElementById('timeElement').textContent = 'Time on the server now is: ' + now.toLocaleTimeString();
+        }
+
+        setInterval(updateTime, 1000); // update time every second (1000 milliseconds)
+        updateTime(); // initial update
+    </script>
 </body>
 </html>
